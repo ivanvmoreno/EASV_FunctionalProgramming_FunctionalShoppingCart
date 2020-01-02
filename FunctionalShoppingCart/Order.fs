@@ -2,10 +2,7 @@ namespace FunctionalShoppingCart
 
 module ItemQuantity =
     type _T = ItemQuantity of int
-    let create (q: int) =
-        if q > 0 && q < 99
-        then Some (ItemQuantity q)
-        else None
+    let create (q: int) = if q > 0 && q < 99 then Some (ItemQuantity q) else None
     let value (ItemQuantity q) = q
 
 module OrderItem =

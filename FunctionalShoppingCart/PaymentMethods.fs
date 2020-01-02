@@ -23,10 +23,7 @@ module Price =
 
 module CardExpirationMonth =
     type _T = CardExpirationMonth of int
-    let create (month: int) =
-        if month > 0 && month <= 12
-            then Some (CardExpirationMonth month)
-            else None
+    let create (month: int) = if month > 0 && month <= 12 then Some (CardExpirationMonth month) else None
     let apply f (CardExpirationMonth m) = f m
     let value m = apply id m
     
@@ -35,8 +32,8 @@ module CardExpirationYear =
     let create (y: int) =
         let currentYear = System.DateTime.Now.Year
         if y >= currentYear && y < currentYear + 10
-            then Some (CardExpirationYear y)
-            else None
+        then Some (CardExpirationYear y)
+        else None
     let apply f (CardExpirationYear y) = f y
     let value y = apply id y 
 
@@ -57,10 +54,7 @@ module CardNumber =
     type _T = CardNumber of int
     let rec digitCount number = if number < 10 then 1 else 1 + digitCount (number / 10)
     let _digitsCount = 16
-    let create (n: int) =
-        if digitCount n = _digitsCount
-        then Some (CardNumber n)
-        else None
+    let create (n: int) = if digitCount n = _digitsCount then Some (CardNumber n) else None
     let apply f (CardNumber n) = f n
     let value n = apply id n
 

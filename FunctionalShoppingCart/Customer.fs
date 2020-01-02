@@ -24,9 +24,7 @@ module ZipCode =
     let create (code: string) =
         let isValid = 
             System.Text.RegularExpressions.Regex.IsMatch(code, @"^\d{5}$") 
-        if isValid
-        then Some (ZipCode code)
-        else None
+        if isValid then Some (ZipCode code) else None
 
 type CustomerContactMethod = Email | PhoneNumber | TwitterProfile
 
@@ -34,8 +32,8 @@ module Cities =
     type _City = City of string
     let _create (citiesList: List<_City>) (city: string) =
         if List.exists (fun (City c) -> c = city) citiesList
-            then Some (City city)
-            else None
+        then Some (City city)
+        else None
     
     module SpanishCity =
         type _T = SpanishCity of _City
